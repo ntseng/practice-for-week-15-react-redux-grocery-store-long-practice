@@ -6,12 +6,14 @@ import configureStore from "./store";
 import { populateProduce } from './store/produce';
 import './index.css';
 import App from './App';
+import { addToCart } from './store/cart';
 
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
 	window.store = store;
 	window.populateProduce = populateProduce;
+	window.addToCart = addToCart;
 	console.log(window.populateProduce());
 }
 
