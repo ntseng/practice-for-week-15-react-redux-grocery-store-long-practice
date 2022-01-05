@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import Cart from './components/Cart';
 import ProduceList from './components/ProduceList';
-import { useDispatch} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import { populateProduce } from './store/produce';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
   const dispatch = useDispatch();
+  const cart = useSelector(state => state.cart);
 
   useEffect(() => {
     dispatch(populateProduce())
@@ -33,7 +34,7 @@ function App() {
             <i className="fas fa-arrow-right"></i>
           </button>
         </div>
-        <Cart />
+        <Cart cart={cart}/>
       </div>
     </>
   );
